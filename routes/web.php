@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// トップページ：投稿一覧
+Route::get('/', 'PostController@index')->name('posts.index');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// ログイン関連のルーティング
+Auth::routes();
+
+//リソースルーティング
+Route::resource('posts', 'PostController')->only([
+    'create', 'store', 'edit', 'update', 'destroy' 
+]);
