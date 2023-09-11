@@ -20,6 +20,9 @@ Route::get('/', 'PostController@index')->name('posts.index');
 // ログイン関連のルーティング
 Auth::routes();
 
+// ユーザー詳細ページ
+Route::get('/users/{id}', 'UserController@show')->name('users.show');
+
 //リソースルーティング
 Route::resource('posts', 'PostController')->only([
     'create', 'store', 'edit', 'update', 'destroy' 

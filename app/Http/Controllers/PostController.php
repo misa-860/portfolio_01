@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use App\User;
 use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
@@ -17,12 +18,15 @@ class PostController extends Controller
     
     public function index()
     {
+        // ログインユーザーを読み込む
+        $user = \Auth::user();
         // Postテーブルを読み込む
-        $posts = Post::where('user_id', \Auth::user()->id)->latest()->get();
+        $posts = Post::where('user_id', $user->id)->latest()->get();
         
         return view('posts.index',[
             'title' => '投稿一覧',
             'posts' => $posts,
+            'recommend_users' => User::recommend($user->id)->get(),
         ]);
     }
     
