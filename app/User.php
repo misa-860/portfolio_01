@@ -51,12 +51,17 @@ class User extends Authenticatable
     
     // 該当のユーザーが特定のユーザーをフォローしているかどうかをチェック
     public function isFollowing($user){
-        $return = $this->follow_users->pluck('id')->contains($user->id);
+    $result = $this->follow_users->pluck('id')->contains($user->id);
         return $result;
     }
     
     // おすすめユーザー
     public function scopeRecommend($query, $self_id){
         return $query->where('id', '!=', $self_id)->inRandomOrder()->limit(3);
+    }
+    
+    // postsリレーションの設定
+    public function posts(){
+        return $this->hasMany('App\Post');
     }
 }

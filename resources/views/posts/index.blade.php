@@ -13,7 +13,7 @@
             </a>
         </li>
     @empty
-        <li>おすすめユーザーはいません。</li>
+        <li>他のユーザーが存在しません。</li>
     @endforelse
 </ul>
 <ul>
@@ -27,12 +27,14 @@
                 {!! nl2br(e($post->contents)) !!}
             </div>
             <div class="post_footer">
-                <a href="{{ route('posts.edit', $post) }}">編集</a>
-                <form method="post" action="{{ route('posts.destroy', $post) }}">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="削除">
-                </form>
+                @if(Auth::user()->id === $post->user_id)
+                    <a href="{{ route('posts.edit', $post) }}">編集</a>
+                    <form method="post" action="{{ route('posts.destroy', $post) }}">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="削除">
+                    </form>
+                @endif
             </div>
         </div>
         @empty

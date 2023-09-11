@@ -20,12 +20,12 @@ class PostController extends Controller
     {
         // ログインユーザーを読み込む
         $user = \Auth::user();
-        // Postテーブルを読み込む
-        $posts = Post::where('user_id', $user->id)->latest()->get();
+        $follow_user_ids = $user->follow_users->pluck('id');
         
+        $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids)->latest()->get();
         return view('posts.index',[
             'title' => '投稿一覧',
-            'posts' => $posts,
+            'posts' => $user_posts,
             'recommend_users' => User::recommend($user->id)->get(),
         ]);
     }

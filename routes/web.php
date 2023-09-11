@@ -23,6 +23,11 @@ Auth::routes();
 // ユーザー詳細ページ
 Route::get('/users/{id}', 'UserController@show')->name('users.show');
 
+// フォローボタン
+Route::resource('follows', 'FollowController')->only([
+    'store', 'destroy'
+]);
+
 //リソースルーティング
 Route::resource('posts', 'PostController')->only([
     'create', 'store', 'edit', 'update', 'destroy' 
