@@ -16,16 +16,29 @@ class PostController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
         // ログインユーザーを読み込む
         $user = \Auth::user();
         $follow_user_ids = $user->follow_users->pluck('id');
         
-        $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids)->latest()->get();
-        return view('posts.index',[
+        //検索キーワードを取得
+        $keyword = $request->input('keyword');
+        
+        //入力されていない状態
+        $query = $user->posts()->orWhereIn('user_id', $follow_user_ids);
+
+        // キーワードが入力された場合、検索条件を追加
+        if (!empty($keyword)) {
+            $query = Post::where('user_id', '!=', $user->id)->where('contents', 'like', '%' . $keyword . '%');
+        }
+        
+        $user_posts = $query->latest()->get();
+        
+        return view('posts.index', [
             'title' => '投稿一覧',
             'posts' => $user_posts,
+            'keyword' => $keyword,
             'recommend_users' => User::recommend($user->id)->get(),
         ]);
     }
@@ -48,10 +61,6 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
     
-    public function show($id)
-    {
-        //
-    }
     
     public function edit($id)
     {

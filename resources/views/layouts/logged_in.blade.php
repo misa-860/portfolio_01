@@ -6,7 +6,7 @@
             <div>
                 <li>
                     <a href="{{ route('posts.index') }}">
-                        OASISblog
+                        グルメblog
                     </a>
                 </li>
             </div>
