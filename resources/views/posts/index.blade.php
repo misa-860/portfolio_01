@@ -3,7 +3,12 @@
 @section('title', $title)
 
 @section('h1_title', $title)
+
 @section('content')
+<form method="get" action="{{ route('posts.index') }}">
+    <input type="text" name="keyword" placeholder="検索キーワードを入力" value="{{ $keyword }}">
+    <input type="submit" value="検索">
+</form>
 <h2>おすすめユーザー</h2>
 <ul class="recommend_users">
     @forelse($recommend_users as $recommend_user)

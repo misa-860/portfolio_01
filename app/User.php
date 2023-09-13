@@ -51,7 +51,7 @@ class User extends Authenticatable
     
     // 該当のユーザーが特定のユーザーをフォローしているかどうかをチェック
     public function isFollowing($user){
-    $result = $this->follow_users->pluck('id')->contains($user->id);
+        $result = $this->follow_users->pluck('id')->contains($user->id);
         return $result;
     }
     
