@@ -17,6 +17,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('users.show', Auth::user()) }}">
+                    プロフィール
+                    </a>
+                </li>
+                <li>
                     <form method="post" action="{{ route('logout') }}" class="logout">
                         @csrf
                         <input type="submit" value="ログアウト">

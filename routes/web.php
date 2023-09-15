@@ -20,8 +20,10 @@ Route::get('/', 'PostController@index')->name('posts.index');
 // ログイン関連のルーティング
 Auth::routes();
 
-// ユーザー詳細ページ
+// ユーザープロフィール/編集画面/編集処理
 Route::get('/users/{id}', 'UserController@show')->name('users.show');
+Route::get('/users/edit', 'UserController@edit')->name('users.edit');
+Route::patch('/users', 'UserController@update')->name('users.update');
 
 // フォローボタン
 Route::resource('follows', 'FollowController')->only([

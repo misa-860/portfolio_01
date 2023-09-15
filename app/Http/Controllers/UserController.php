@@ -20,7 +20,7 @@ class UserController extends Controller
         $posts = Post::where('user_id', $user->id)->latest()->get();
         
         return view('users.show', [
-            'title' => 'ユーザー詳細', 
+            'title' => 'プロフィール', 
             'user' => $user,
             'posts' => $posts,
         ]);
