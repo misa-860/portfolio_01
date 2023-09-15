@@ -4,6 +4,9 @@
 
 @section('h1_title', $title)
 @section('content')
+@if($user->id === Auth::user()->id)
+    [<a href="{{ route('users.edit') }}">プロフィール編集</a>]
+@endif
 <dl>
     <dt>ユーザー名</dt>
     <dd>{{ $user->name }}</dd>

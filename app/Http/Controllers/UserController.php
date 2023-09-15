@@ -25,4 +25,14 @@ class UserController extends Controller
             'posts' => $posts,
         ]);
     }
+    
+    public function edit()
+    {
+        $current_user = \Auth::user();
+        
+        return view('users.edit', [
+            'title' => 'プロフィール編集',
+            'current_user' => $current_user,
+        ]);
+    }
 }
