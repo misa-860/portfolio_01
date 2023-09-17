@@ -32,3 +32,8 @@ li {
   display: flex;
   flex-direction: row;
 }
+
+/* ユーザープロフィール  */
+.user_image {
+  width: 100px;
+}
