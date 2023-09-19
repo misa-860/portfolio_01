@@ -45,12 +45,12 @@ class UserController extends Controller
         $path = '';
         $image = $request->file('image');
         
-        if( isset($image) === true){
+        if(isset($image) === true){
             $path = $image->store('photos', 'public');
         }
         
         if($user->image !== ''){
-            \Storage::disk('public')->delete(\Storage::url($user->image));
+            \Storage::disk('public')->delete($user->image);
         }
         
         $user->update([

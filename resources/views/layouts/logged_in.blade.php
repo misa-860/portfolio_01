@@ -22,6 +22,9 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('follows.index') }}">フォロー</a>
+                </li>
+                <li>
                     <form method="post" action="{{ route('logout') }}" class="logout">
                         @csrf
                         <input type="submit" value="ログアウト">
