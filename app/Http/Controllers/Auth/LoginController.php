@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Illuminate\Http\Request;
+
 class LoginController extends Controller
 {
     /*
@@ -21,20 +23,32 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    // ログアウト後の動作をカスタマイズ
+    protected function loggedOut(Request $request)
+    {
+        // ログイン画面にリダイレクト
+        return redirect(route('login'));
+    }
+    
+    // バリデーションを変更する。
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
+    
+    protected function credentials(Request $request)
+    {
+        // ログイン認証情報を設定
+        return ['name' => $request->input('name'), 'password' => $request->input('password')];
     }
 }

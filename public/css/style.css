@@ -1,0 +1,39 @@
+/* エラーメッセージ用のスタイル */
+.error {
+  color: red;
+}
+/* 成功メッセージ用のスタイル */
+.success {
+  color: green;
+}
+
+/* ヘッダーの編集 */
+li {
+    list-style: none;
+}
+
+.header_nav {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.header_nav_login {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+}
+
+.header_nav li {
+  margin-right: 30px;
+}
+
+.header_nav_right {
+  display: flex;
+  flex-direction: row;
+}
+
+/* ユーザープロフィール  */
+.user_image {
+  width: 100px;
+}
