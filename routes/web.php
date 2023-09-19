@@ -31,7 +31,7 @@ Route::resource('users', 'UserController')->only([
 
 // フォローボタン
 Route::resource('follows', 'FollowController')->only([
-    'store', 'destroy'
+    'index','store', 'destroy'
 ]);
 
 //リソースルーティング
