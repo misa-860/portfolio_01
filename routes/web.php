@@ -20,6 +20,11 @@ Route::get('/', 'PostController@index')->name('posts.index');
 // ログイン関連のルーティング
 Auth::routes();
 
+// ユーザープロフィール/編集画面/編集処理
+Route::get('/users/edit', 'UserController@edit')->name('users.edit');
+Route::patch('/users', 'UserController@update')->name('users.update');
+// Route::get('/users/{id}', 'UserController@show')->name('users.show');
+
 Route::resource('users', 'UserController')->only([
     'show',    
 ]);
