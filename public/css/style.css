@@ -37,3 +37,29 @@ li {
 .user_image {
   width: 100px;
 }
+
+/* 投稿画面 */
+.post {
+  width: 300px;
+}
+
+.post_footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post_images {
+  width: 300px;
+  height: 300px;
+  border: solid 10px #f0f0f0;
+  box-sizing: border-box; 
+}
+
+.user_link_area {
+  display: flex;
+  flex-direction: row;
+}
+
+.like_button {
+  cursor: pointer;
+}

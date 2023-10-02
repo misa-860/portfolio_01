@@ -25,6 +25,14 @@ class PostRequest extends FormRequest
     {
         return [
             'contents' => ['required', 'max:140'],
+            'image' => [
+                'required',
+            	'file', // ファイルがアップロードされている
+            	'image', // 画像ファイルである
+            	'mimes:jpeg,jpg,png', // 形式はjpegかpng
+            	'dimensions:min_width=100,min_height=100', 
+            	'max:10240'
+            ],
         ];
     }
 }
