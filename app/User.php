@@ -65,4 +65,13 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany('App\Post');
     }
+    
+    // いいねリレーション
+    public function likes(){
+        return $this->hasMany('App\Like');
+    }
+    
+    public function likePosts(){
+        return $this->belongsToMany('App\Post', 'likes');
+    }
 }

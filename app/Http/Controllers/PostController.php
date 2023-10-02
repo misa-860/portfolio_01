@@ -52,9 +52,16 @@ class PostController extends Controller
     
     public function store(PostRequest $request)
     {
+        $path = '';
+        $image = $request->file('image');
+        if(isset($image) === true){
+            $path = $image->store('gourmet_photos', 'public');
+        }
+        
         $posts = Post::create([
             'user_id' => \Auth::user()->id,
             'contents' => $request->contents,
+            'image' => $path,
         ]);
         session()->flash('success', '投稿を追加しました！');
         
@@ -72,8 +79,12 @@ class PostController extends Controller
         ]);
     }
     
-    public function update(PostRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'contents' => ['required', 'max:140'],
+        ]);
+
         $post = Post::find($id);
         $post->update($request->only(['contents']));
         

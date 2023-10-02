@@ -4,8 +4,12 @@
  
 @section('h1_title', $title)
 @section('content')
-  <form method="post" action="{{ route('posts.store') }}">
+  <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
       @csrf
+      <label>
+        画像:
+        <input type="file" name="image">
+      </label>
       <div>
           <textarea name="contents"></textarea>
       </div>

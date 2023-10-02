@@ -51,10 +51,19 @@
                    {{ $post->user->name }} {{ $post->created_at }} 
                 </div>
                 <div class="post_contents">
+                    @if($post->image !== '')
+                        <img class="post_images" src="{{ asset('storage/'. $post->image) }}">
+                    @endif
                     {!! nl2br(e($post->contents)) !!}
                 </div>
-                <div class="post_footer">
-                    @if($user->id === Auth::user()->id)
+            <div class="post_footer">
+                <a class="like_button">{{ $post->isLikedBy(Auth::user()) ? '★' : '☆' }}</a>
+                <form method="post" class="like" action="{{ route('posts.toggle_like', $post) }}">
+                  @csrf
+                  @method('patch')
+                </form>
+                <div class="user_link_area">
+                    @if(Auth::user()->id === $post->user_id)
                         <a href="{{ route('posts.edit', $post) }}">編集</a>
                         <form method="post" action="{{ route('posts.destroy', $post) }}">
                             @csrf
@@ -63,6 +72,7 @@
                         </form>
                     @endif
                 </div>
+            </div>
         </div>
     </li>
     @empty
@@ -70,4 +80,13 @@
     @endforelse
 </ul>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      /* global $ */
+      $('.like_button').each(function(){
+        $(this).on('click', function(){
+          $(this).next().submit();
+        });
+      });
+    </script>
 @endsection
