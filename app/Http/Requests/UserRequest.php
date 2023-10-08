@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('users')->ignore(\Auth::user())],
+            'name' => ['required', Rule::unique('users')->ignore(\Auth::user()), 'max:10'],
             'profile' => ['max:150','nullable'],
             'image' => [
                 'nullable',

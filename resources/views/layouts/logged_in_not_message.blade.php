@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default_not_message')
 
 @section('header')
     <header>
