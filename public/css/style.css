@@ -1,65 +1,424 @@
 /* エラーメッセージ用のスタイル */
 .error {
-  color: red;
+    color: red;
 }
+
 /* 成功メッセージ用のスタイル */
 .success {
-  color: green;
+    color: green;
+}
+
+body {
+    background-color: #FFF8EF;
+    color: #333333;
+}
+
+textarea {
+    resize: none;
+}
+
+/* container  */
+.container {
+    max-width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #FFFCF8;
+}
+
+.main {
+    width: 100%;
+    padding: 0 40px;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 /* ヘッダーの編集 */
+ul {
+    padding: 0;
+    margin: 0;
+}
+
 li {
     list-style: none;
 }
 
 .header_nav {
-  display: flex;
-  list-style: none;
-  padding-left: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    padding-left: 0;
+    background-color: #E8A048;
+    height: 60px;
+    margin-bottom: 40px;
 }
 
 .header_nav_login {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-left: 0;
+    background-color: #E8A048;
+    height: 60px;
+    margin-bottom: 10px;
 }
 
-.header_nav li {
-  margin-right: 30px;
+.header_title a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 18px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .header_nav_right {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header_nav_right li {
+    text-decoration: none;
+}
+
+.header_link a {
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 18px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header_link a:hover {
+    background-color: #FFC966;
+}
+
+.heder_logout_link input {
+    padding: 18px;
+    border: none;
+    background: none;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* トランジションを追加 */
+}
+
+.heder_logout_link input:hover {
+    background-color: #FFC966;
+}
+
+/* ログイン作成-ユーザー登録  */
+.auth_h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth_error {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth_content {
+    display: flex;
+    justify-content: center;
+}
+
+.auth_form input {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.auth_submit input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: #E8A048;
+    color: #FFFFFF;
+    transition: background-color 0.3s, color 0.3s;
+    /* トランジションを追加 */
+}
+
+/* ホバー状態 */
+.auth_submit input:hover {
+    background-color: #FFC966;
+}
+
+/* フォローボタン */
+.follow_button input {
+    background-color: #E8A048;
+    color: #FFFFFF;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    /* トランジションを追加 */
+}
+
+.follow_button input:hover {
+    background-color: #FFC966;
+}
+
+.follow_delete_button input {
+    background-color: #FFFFFF;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    /* トランジションを追加 */
+}
+
+.follow_delete_button input:hover {
+    background-color: #FFD3B6;
+}
+
+/* 新規作成 編集ボタン プロフィール更新ボタン */
+.create_edit_button input {
+    background-color: #E8A048;
+    color: #FFFFFF;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    /* トランジションを追加 */
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.create_edit_button input:hover {
+    background-color: #FFC966;
+}
+
+/* 編集・削除ボタン */
+.edit_button {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    margin-right: 1px;
+    text-decoration: none;
+    background: #E8A048;
+    border: 1px solid black;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+    /* トランジションを追加 */
+}
+
+.edit_button:hover {
+    background-color: #FFC966;
+}
+
+.delete_button input:hover {
+    cursor: pointer;
+}
+
+/* トップページ */
+.search_recommend_box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.recommend_users {
+    display: flex;
+    flex-direction: row;
+}
+
+.recommend_users_list {
+    margin-right: 10px;
+}
+
+/* 投稿編集  */
+.edit_image_area {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.edit_image {
+    width: 300px;
+    height: 300px;
+    border: solid 10px #FEECD2;
+    box-sizing: border-box;
 }
 
 /* ユーザープロフィール  */
-.user_image {
-  width: 100px;
+.profile_box {
+    display: flex;
+    flex-direction: row;
 }
 
-/* 投稿画面 */
+.profile_box2 {
+    flex-grow: 2;
+    margin-left: 20px;
+}
+
+.user_image {
+    width: 100px;
+}
+
+.profile_search_box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px
+}
+
+.userid_edit_area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_activity_section {
+    display: flex;
+    flex-direction: row;
+}
+
+.user_activity_button input {
+    padding: 2px 30px;
+    cursor: pointer;
+    background-color: #E8A048;
+    color: #FFFFFF;
+    border: none;
+    margin-right: 1px;
+    transition: background-color 0.3s, color 0.3s;
+    /* トランジションを追加 */
+}
+
+/* ホバー状態 */
+.user_activity_button input:hover {
+    background-color: #FFC966;
+}
+
+.user_activity_button2 input {
+    padding: 2px 30px;
+    cursor: pointer;
+    background-color: #E9717A;
+    color: #FFFFFF;
+    border: none;
+    margin-right: 1px;
+    transition: background-color 0.3s, color 0.3s;
+    /* トランジションを追加 */
+}
+
+/* ホバー状態 */
+.user_activity_button2 input:hover {
+    background-color: #FF9E9D;
+}
+
+.main_content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.main_content::after {
+    content: "";
+    display: block;
+    width: 30%;
+}
+
 .post {
-  width: 300px;
+    width: 300px;
 }
 
 .post_footer {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    margin-bottom: 10px;
 }
 
 .post_images {
-  width: 300px;
-  height: 300px;
-  border: solid 10px #f0f0f0;
-  box-sizing: border-box; 
+    width: 300px;
+    height: 300px;
+    border: solid 10px #FEECD2;
+    box-sizing: border-box;
+}
+
+.post_images_like {
+    width: 300px;
+    height: 300px;
+    border: solid 10px #FFD0CB;
+    box-sizing: border-box;
+}
+
+.post_follow_images {
+    width: 300px;
+    height: 300px;
+    border: solid 10px #FBDAC8;
+    box-sizing: border-box;
 }
 
 .user_link_area {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-grow: 2;
 }
 
 .like_button {
-  cursor: pointer;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* ユーザープロフィール編集 */
+.user_edit_box {
+    margin: 0 50px;
+    margin-top: 10px;
+}
+
+.user_edit_dt {
+    margin-top: 10px;
+}
+
+.user_edit_submit {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.user_edit_textarea {
+    width: 100%;
+    height: 200px;
+}
+
+/* フォローユーザー */
+.search_user {
+    margin-bottom: 20px
+}
+
+.search_user_area {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search_user_area li {
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.follow_users {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.follow_users li {
+    margin-right: 30px;
+}
+
+/* 新規投稿 */
+.create_box {
+    margin: 0 200px;
+    margin-top: 10px;
+}
+
+.create_textarea {
+    margin-top: 10px;
+    width: 100%;
+    height: 100px
+}
+
+.edit_box {
+    margin: 0 200px;
+    margin-top: 10px;
+}
+
+.edit_textarea {
+    width: 100%;
+    height: 100px;
 }

@@ -9,6 +9,38 @@ use App\User;
 
 class LikeController extends Controller
 {
+    // ログインしていないと入れない設定
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function show(Request $request ,$id)
+    {
+        $user = \Auth::user();
+        
+        // 検索キーワードを取得
+        $keyword = $request->input('keyword');
+        
+        // 入力されていない状態
+        $query = $user->likePosts()->orderBy('created_at', 'asc');
+        
+        if(!empty($keyword)) {
+            $query = $user->likePosts()->orderBy('created_at', 'asc')->
+                where('contents', 'like', '%' . $keyword . '%');
+        }
+        
+        $like_posts = $query->get();
+        
+        return view('users.show',[
+            'title' => 'プロフィール',
+            'keyword' => $keyword,
+            'user' => $user,
+            'posts' => $like_posts,
+        ]);
+
+    }
+
     public function toggleLike($id){
         $user = \Auth::user();
         $post = Post::find($id);

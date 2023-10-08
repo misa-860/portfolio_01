@@ -1,16 +1,22 @@
 @extends('layouts.not_logged_in')
 
-@section('h1_title', 'ログイン')
+@section('title', 'ログイン')
 @section('content')
     <main>
+        <h1 class="auth_h1">ログイン</h1>
+        <div class="auth_error">
+            {{-- エラーメッセージを出力 --}}
+            @foreach($errors->all() as $error)
+              <p class="error">{{ $error }}</p>
+            @endforeach
+        </div>
         <div class="auth_content">
-
             <form method="post" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
                     <label>
-                        <div class="auth-form">
-                        ユーザー名:
+                        ユーザーID:
+                        <div class="auth_form">
                             <input type="text" name="name">
                         </div>
                     </label>
@@ -18,14 +24,14 @@
                 
                 <div class="form-group">
                     <label>
-                        <div class="auth-form">
                         パスワード:
+                        <div class="auth_form">
                             <input type="password" name="password">
                         </div>
                     </label>
                 </div>
                 
-                <div class="auth-submit">
+                <div class="auth_submit">
                     <input type="submit" value="ログイン">
                 </div>
             </form>

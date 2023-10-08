@@ -1,14 +1,14 @@
-@extends('layouts.default')
+@extends('layouts.default_not_message')
 
 @section('header')
     <header>
         <ul class="header_nav">
-            <li>
+            <li class="header_link">
                 <a href="{{ route('register') }}">
                     ユーザー登録
                 </a>
             </li>
-            <li>
+            <li class="header_link">
                 <a href="{{ route('login') }}">
                     ログイン
                 </a>

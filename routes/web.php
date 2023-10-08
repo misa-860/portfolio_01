@@ -26,7 +26,8 @@ Route::patch('/users', 'UserController@update')->name('users.update');
 // Route::get('/users/{id}', 'UserController@show')->name('users.show');
 
 // いいねボタン
-Route::patch('/likes/{like_post}/toggle_like', 'LikeController@toggleLike')->name('posts.toggle_like');
+Route::get('/likes/{likes}', 'LikeController@show')->name('likes.show');
+Route::patch('/likes/{like_post}/toggle_like', 'LikeController@toggleLike')->name('likes.toggle_like');
 
 Route::resource('users', 'UserController')->only([
     'show',    

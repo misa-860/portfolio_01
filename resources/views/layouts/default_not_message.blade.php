@@ -12,19 +12,6 @@
         @yield('header')
      
         <div class="main">
-            <h1>@yield('h1_title')</h1>
-            {{-- エラーメッセージを出力 --}}
-            @foreach($errors->all() as $error)
-              <p class="error">{{ $error }}</p>
-            @endforeach
-         
-            {{-- 成功メッセージを出力 --}} 
-            @if (\Session::has('success'))
-                <div class="success">
-                    {{ \Session::get('success') }}
-                </div>
-            @endif
-            
             @yield('content')
         </div>
     </div>
